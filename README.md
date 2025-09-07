@@ -69,7 +69,7 @@ For more examples, see the test cases in `rgx.c`.
    ```
    git clone https://github.com/ynsspro/rgxEngine.git
    cd rgxEngine
-   touch
+   touch bin
    ```
 2. Build and run tests:
    ```
