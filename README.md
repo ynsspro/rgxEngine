@@ -23,11 +23,11 @@ Key features:
 The regex patterns use a custom notation. Here's a breakdown:
 
 ### Character Types
-- `'.c'`: Matches any alphabetic character (a-z, A-Z).
-- `'.n'`: Matches any digit (0-9).
-- `'.s'`: Matches a space (excluding tabs).
-- `'.t'`: Matches a tab.
-- `"'string'"`: Matches a literal string (e.g., `'ab'` matches "ab"). Use `\'` to escape quotes inside.
+- `.c`: Matches any alphabetic character (a-z, A-Z).
+- `.n`: Matches any digit (0-9).
+- `.s`: Matches a space (excluding tabs).
+- `.t`: Matches a tab.
+- `'string'`: Matches a literal string (e.g., `'ab'` matches "ab"). Use `\'` to escape quotes inside.
 - `\\.`: Escapes special characters like `.` or `'`.
 
 ### Quantifiers (applied after a character type)
@@ -46,15 +46,15 @@ Patterns are concatenated without operators (e.g., `'.c_(3)'.n_(2)'` matches 3 c
 Spaces in patterns are ignored (removed during compilation).
 
 ### Examples
-- `'.c_(3)'`: Matches exactly 3 alphabetic characters (e.g., "abc" ✔️, "ab" ❌).
-- `'.n>(2)'`: Matches 2 or more digits (e.g., "123" ✔️, "12" ✔️, "1" ❌).
-- `"'ab'_(2)'`: Matches "abab" exactly.
-- `'.s~(1,3)'`: Matches 1 to 3 spaces (e.g., "  " ✔️, "    " ❌).
-- `'.c|(2,4)'`: Matches exactly 2 or 4 alphabetic characters.
+- `.c_(3)`: Matches exactly 3 alphabetic characters (e.g., "abc" ✔️, "ab" ❌).
+- `.n>(2)`: Matches 2 or more digits (e.g., "123" ✔️, "12" ✔️, "1" ❌).
+- `'ab'_(2)`: Matches "abab" exactly.
+- `.s~(1,3)`: Matches 1 to 3 spaces (e.g., "  " ✔️, "    " ❌).
+- `.c|(2,4)`: Matches exactly 2 or 4 alphabetic characters.
 - `-s{abc}.c`: Starts with "abc" followed by one char (e.g., "abcd" ✔️).
 - `-e{xyz}'`: Ends with "xyz" (e.g., "abcxyz" ✔️).
-- `'a\\''_(2)'`: Matches "a\\'a\\'" (escaped quotes).
-- `'.c|(1,4)'.'.c>(2)'@gmail.com'`: Simple email-like pattern (e.g., "john.doe@gmail.com" ✔️).
+- `a\\''_(2)`: Matches "a\\'a\\'" (escaped quotes).
+- `.c|(1,4)'.'.c>(2)'@gmail.com'`: Simple email-like pattern (e.g., "john.doe@gmail.com" ✔️).
 
 For more examples, see the test cases in `rgx.c`.
 
@@ -102,7 +102,7 @@ Example:
 
 int main() {
     int pos = 0;
-    if (rgx_match("'.c_(3)'", "abc", &pos) == 1) {
+    if (rgx_match(".c_(3)", "abc", &pos) == 1) {
         printf("Match!\n");
     }
     return 0;
