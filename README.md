@@ -67,8 +67,9 @@ For more examples, see the test cases in `rgx.c`.
 ### Build Instructions
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/rgx-engine.git
-   cd rgx-engine
+   git clone https://github.com/ynsspro/rgxEngine.git
+   cd rgxEngine
+   touch
    ```
 2. Build and run tests:
    ```
